@@ -1,10 +1,10 @@
+import Hero from "@/components/hero";
+
 export default function Home() {
   return (
     <main className="min-h-screen">
       {/* 主视觉区 */}
-      <section id="hero" className="min-h-screen flex items-center justify-center">
-        <h2 className="text-3xl font-bold text-foreground">主视觉区 (Hero)</h2>
-      </section>
+      <Hero />
 
       {/* 技能区 */}
       <section id="skills" className="min-h-screen flex items-center justify-center">
