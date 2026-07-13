@@ -1,5 +1,6 @@
 import Hero from "@/components/hero";
 import Skills from "@/components/skills";
+import Services from "@/components/services";
 
 export default function Home() {
   return (
@@ -11,9 +12,7 @@ export default function Home() {
       <Skills />
 
       {/* 服务区 */}
-      <section id="services" className="min-h-screen flex items-center justify-center">
-        <h2 className="text-3xl font-bold text-foreground">服务区 (Services)</h2>
-      </section>
+      <Services />
 
       {/* 案例区 */}
       <section id="cases" className="min-h-screen flex items-center justify-center">

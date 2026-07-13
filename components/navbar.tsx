@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
   { label: "首页", href: "#hero" },
@@ -13,9 +13,20 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-lg">
+    <header
+      className={`sticky top-0 z-50 bg-background/80 backdrop-blur-lg transition-shadow duration-300 ${
+        scrolled ? "shadow-sm" : ""
+      }`}
+    >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         {/* 品牌名 */}
         <a
@@ -46,7 +57,6 @@ export default function Navbar() {
           aria-label="切换菜单"
         >
           {open ? (
-            /* 关闭图标 (X) */
             <svg
               width="20"
               height="20"
@@ -59,7 +69,6 @@ export default function Navbar() {
               <line x1="15" y1="5" x2="5" y2="15" />
             </svg>
           ) : (
-            /* 汉堡菜单图标 */
             <svg
               width="20"
               height="20"
@@ -78,7 +87,7 @@ export default function Navbar() {
 
       {/* 移动端展开菜单 */}
       {open && (
-        <div className="md:hidden border-t border-border/50 bg-background/80 backdrop-blur-lg">
+        <div className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-lg">
           <ul className="flex flex-col px-6 pb-4 pt-2 gap-3 text-sm font-medium">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
