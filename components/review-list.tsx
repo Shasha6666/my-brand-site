@@ -116,7 +116,7 @@ export default function ReviewList() {
       {!loading && reviews.length > 0 && (
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
           {reviews.map((r, i) => {
-            const g = GRADIENTS[(page - 1) * PAGE_SIZE + i] ?? GRADIENTS[0];
+            const g = GRADIENTS[((page - 1) * PAGE_SIZE + i) % GRADIENTS.length];
             return (
               <div
                 key={r.id}
