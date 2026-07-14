@@ -8,6 +8,12 @@
   }
 }
 
+/* 博客文章行内代码（仅非 pre 内的 code） */
+article :not(pre) > code {
+  @apply rounded bg-muted px-1.5 py-0.5 text-sm font-medium;
+  color: hsl(var(--brand-primary));
+}
+
 
 
 @layer base {
