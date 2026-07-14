@@ -19,7 +19,6 @@ export default function ReviewForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  // 客户端初始化：检查 localStorage
   useEffect(() => {
     setHydrated(true);
     if (localStorage.getItem(REVIEWED_KEY)) {
@@ -70,43 +69,28 @@ export default function ReviewForm() {
     setTimeout(() => window.location.reload(), 1000);
   };
 
-  // SSR / 未水合前不渲染，避免水合错误
   if (!hydrated) return null;
 
-  // 已评价过
-  if (alreadyReviewed) {
-    return (
-      <section id="reviews" className="bg-background px-6 py-24 sm:px-8">
-        <div className="mx-auto max-w-xl text-center">
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-            客户评价
-          </h2>
-          <p className="mt-3 text-muted-foreground">来自客户的真实反馈</p>
-          <div className="mt-12 rounded-xl border-2 border-dashed border-border py-16">
-            <span className="text-lg text-muted-foreground">
-              💚 感谢你的评价！你已经提交过评价了
-            </span>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section id="reviews" className="bg-background px-6 py-24 sm:px-8">
-      <div className="mx-auto max-w-xl">
-        <h2 className="text-center text-3xl font-bold text-foreground sm:text-4xl">
-          客户评价
-        </h2>
-        <p className="mt-3 text-center text-muted-foreground">
-          来自客户的真实反馈
-        </p>
+    <div className="mt-20">
+      <h2 className="text-center text-3xl font-bold text-foreground sm:text-4xl">
+        留下你的评价
+      </h2>
+      <p className="mt-3 text-center text-muted-foreground">
+        你的反馈对我很重要
+      </p>
 
-        {/* 表单卡片 */}
+      {alreadyReviewed ? (
+        <div className="mt-12 flex justify-center rounded-xl border-2 border-dashed border-border py-16">
+          <span className="text-lg text-muted-foreground">
+            💚 感谢你的评价！你已经提交过评价了
+          </span>
+        </div>
+      ) : (
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="mt-12 overflow-hidden rounded-xl bg-card shadow-md"
+          className="mx-auto mt-12 max-w-xl overflow-hidden rounded-xl bg-card shadow-md"
         >
           {/* 顶部渐变装饰线 */}
           <div className="h-1.5 w-full bg-gradient-to-r from-[hsl(var(--brand-primary))] to-[hsl(var(--brand-accent))]" />
@@ -226,7 +210,7 @@ export default function ReviewForm() {
             )}
           </div>
         </form>
-      </div>
-    </section>
+      )}
+    </div>
   );
 }
