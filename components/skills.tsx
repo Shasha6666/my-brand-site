@@ -22,7 +22,7 @@ export default function Skills() {
         </p>
 
         {/* 技能标签 */}
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <div className="mt-12 flex flex-wrap justify-center gap-3">
           {SKILLS.map((skill) => (
             <span
               key={skill.label}
