@@ -5,6 +5,7 @@ import Cases from "@/components/cases";
 import Books from "@/components/books";
 import ReviewList from "@/components/review-list";
 import ReviewForm from "@/components/review-form";
+import BlogSection from "@/components/blog-section";
 
 export default function Home() {
   return (
@@ -31,6 +32,9 @@ export default function Home() {
           <ReviewForm />
         </div>
       </section>
+
+      {/* 博客区 */}
+      <BlogSection />
     </main>
   );
 }
