@@ -1,0 +1,179 @@
+---
+title: "MDX 能做哪些 Markdown 做不到的事"
+date: "2026-01-01"
+summary: "MDX 让 Markdown 文件可以直接使用 React 组件，本文通过具体例子展示 MDX 的独特能力"
+---
+
+传统 Markdown 只能写静态内容，而 **MDX 可以直接在文章里使用 React 组件**，让博客从"文字页面"升级为"互动体验"。下面用 11 个组件演示 MDX 的独特能力。
+
+## 1. 提示框 Callout
+
+写技术文章经常需要插入提示、警告或小技巧，用 Callout 组件可以醒目地展示：
+
+<Callout type="info" title="版本说明">
+本文所有组件基于 React 18 和 Next.js 14，请确保项目环境一致。
+</Callout>
+
+<Callout type="tip" title="小技巧">
+MDX 文件本质上就是一个 React 组件，你可以在 `components` 配置中注册任何自定义组件。
+</Callout>
+
+<Callout type="warning">
+部署到 Vercel 之前记得配置环境变量，否则 API 调用会失败。
+</Callout>
+
+<Callout type="success">
+恭喜！你已经掌握了 MDX 的基本用法，可以开始写互动文章了。
+</Callout>
+
+## 2. 标签页 Tabs
+
+信息太多时用标签页组织，点击切换，内容一目了然：
+
+<Tabs labels="JavaScript,TypeScript,Python">
+<TabPanel>
+```js
+const greeting = "Hello MDX!";
+console.log(greeting.split("").reverse().join(""));
+```
+</TabPanel>
+<TabPanel>
+```ts
+const greeting: string = "Hello MDX!";
+console.log(greeting.split("").reverse().join(""));
+```
+</TabPanel>
+<TabPanel>
+```py
+greeting = "Hello MDX!"
+print(greeting[::-1])
+```
+</TabPanel>
+</Tabs>
+
+## 3. 折叠面板 Accordion
+
+适合放 FAQ 常见问题，用户按需展开，不浪费页面空间：
+
+<Accordion title="MDX 和普通 Markdown 有什么区别？">
+MDX 是 Markdown 的超集，完全兼容 Markdown 语法，同时允许在文中直接使用 JSX 组件。这意味着你可以在文章里嵌入任何 React 组件，比如图表、表单、动画等。
+</Accordion>
+
+<Accordion title="博客用什么工具渲染 MDX？">
+本项目使用 <Kbd>next-mdx-remote</Kbd>，它支持在 Next.js 服务端组件中安全地渲染 MDX，是目前最主流的方案之一。
+</Accordion>
+
+<Accordion title="如何在 MDX 中自定义组件？">
+在 `MDXRemote` 的 `components` 属性中注册即可。组件可以是服务端组件，也可以是客户端组件（加 `"use client"`）。
+</Accordion>
+
+## 4. 步骤卡片 Steps
+
+用带编号和连接线的步骤卡片展示操作流程：
+
+<Steps>
+<StepItem>
+
+**安装依赖**
+
+在项目根目录运行安装命令，添加 MDX 相关依赖包。
+
+</StepItem>
+<StepItem>
+
+**配置 MDX**
+
+创建 `mdx-wrapper.tsx`，在 `components` 中注册自定义组件。
+
+</StepItem>
+<StepItem>
+
+**编写文章**
+
+在 `public/blogs/` 下创建 `.mdx` 文件，使用注册好的组件写出互动内容。
+
+</StepItem>
+<StepItem>
+
+**发布上线**
+
+提交代码到 Git，推送到 Vercel 自动部署，文章即刻上线。
+
+</StepItem>
+</Steps>
+
+## 5. 代码块复制按钮
+
+鼠标悬停在代码块上，右上角出现复制按钮，一键复制整段代码：
+
+```tsx
+// 鼠标悬停代码块试试右上角
+interface BlogPost {
+  title: string;
+  date: string;
+  content: string;
+}
+
+function parseMdx(file: string): BlogPost {
+  const { data, content } = matter(file);
+  return { title: data.title, date: data.date, content };
+}
+```
+
+## 6. B 站视频嵌入
+
+直接在文章里嵌入 B 站视频，自适应宽度，最高清晰度播放：
+
+<BilibiliVideo bv="BV1nS411w7mf" title="B 站视频演示" />
+
+## 7. 引用卡片 Quote
+
+比普通块引用更醒目，适合突出重要观点：
+
+<Quote author="张老师">
+好的技术文章不在于罗列知识点，而在于让读者读完就能动手实践。
+</Quote>
+
+## 8. 键盘按键 Kbd
+
+在正文中自然地展示快捷键：按 <Kbd>Ctrl</Kbd> + <Kbd>S</Kbd> 保存文件，按 <Kbd>F12</Kbd> 打开开发者工具，按 <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>R</Kbd> 强制刷新页面。
+
+## 9. 代码对比 Diff
+
+直观展示代码修改前后的变化：
+
+<Diff>
+<DiffLine type="del">const apiUrl = "http://localhost:3000";</DiffLine>
+<DiffLine type="add">const apiUrl = "https://api.example.com";</DiffLine>
+<DiffLine type="del">fetch(apiUrl + "/v1/users")</DiffLine>
+<DiffLine type="add">fetch(apiUrl + "/v2/users", {"{"} headers: {"{"} Authorization: '...' {"}"} {"}"})</DiffLine>
+</Diff>
+
+## 10. 时间轴 Timeline
+
+竖向时间轴展示学习路径或项目里程碑：
+
+<Timeline>
+<TimelineItem time="2025 年 6 月" title="入门 Web 开发">
+学会 HTML、CSS、JavaScript 基础，搭建了第一个静态网站。
+</TimelineItem>
+<TimelineItem time="2025 年 9 月" title="掌握 React 框架">
+系统学习了 React、Next.js、Tailwind CSS，开始做全栈项目。
+</TimelineItem>
+<TimelineItem time="2026 年 1 月" title="探索 AI 编程">
+学习使用 AI 工具辅助开发，效率翻倍，完成了个人品牌网站。
+</TimelineItem>
+<TimelineItem time="2026 年 7 月" title="发布技术博客">
+用 MDX 搭建博客，开始记录技术成长，分享开发经验。
+</TimelineItem>
+</Timeline>
+
+## 11. 文件下载按钮 Download
+
+提供带图标、文件名和大小的下载按钮：
+
+<Download href="/pdf/ai-knowledge-guide.pdf" name="AI 知识库搭建指南.pdf" size="2.4 MB" />
+
+---
+
+以上就是 MDX 的 11 种互动组件演示。有了这些组件，你的博客不再是纯文字页面，而是**有互动、有层次、有温度**的技术分享平台。
