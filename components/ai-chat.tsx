@@ -122,9 +122,9 @@ export default function AIChat() {
 
       {/* 聊天窗口 */}
       {open && (
-        <div className="fixed bottom-[116px] right-6 z-[60] flex h-[420px] w-[360px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black/5">
+        <div className="fixed bottom-[116px] right-6 z-[60] flex h-[420px] w-[360px] max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black/5 dark:bg-card dark:ring-white/10">
           {/* 头部 */}
-          <div className="flex items-center gap-2.5 border-b border-black/5 px-4 py-3">
+          <div className="flex items-center gap-2.5 border-b border-black/5 px-4 py-3 dark:border-white/10">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[hsl(var(--brand-primary))] to-[hsl(var(--brand-accent))] text-sm text-white">
               AI
             </div>

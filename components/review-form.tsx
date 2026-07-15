@@ -90,7 +90,7 @@ export default function ReviewForm() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="mx-auto mt-12 max-w-xl overflow-hidden rounded-xl bg-card shadow-md"
+          className="mx-auto mt-12 max-w-xl overflow-hidden rounded-xl bg-[hsl(var(--brand-primary)/0.06)] shadow-md"
         >
           {/* 顶部渐变装饰线 */}
           <div className="h-1.5 w-full bg-gradient-to-r from-[hsl(var(--brand-primary))] to-[hsl(var(--brand-accent))]" />

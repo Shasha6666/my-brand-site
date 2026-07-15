@@ -120,7 +120,7 @@ export default function ReviewList() {
             return (
               <div
                 key={r.id}
-                className="group flex flex-col overflow-hidden rounded-xl bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                className="group flex flex-col overflow-hidden rounded-xl bg-[hsl(var(--brand-primary)/0.06)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
               >
                 {/* 顶部渐变线 */}
                 <div className={`h-1.5 w-full bg-gradient-to-r ${g.bar}`} />

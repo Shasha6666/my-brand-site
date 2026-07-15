@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import ThemeToggle from "@/components/theme-toggle";
 
 const NAV_LINKS = [
   { label: "首页", href: "#hero" },
@@ -49,6 +50,9 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <ThemeToggle />
+          </li>
         </ul>
 
         {/* 移动端菜单按钮 */}
@@ -101,6 +105,10 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
+            <li className="flex items-center gap-2 py-1 text-muted-foreground">
+              <ThemeToggle />
+              <span>切换主题</span>
+            </li>
           </ul>
         </div>
       )}

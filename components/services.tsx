@@ -21,7 +21,7 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#edf0f5] px-6 py-24 sm:px-8">
+    <section id="services" className="bg-[#edf0f5] px-6 py-24 sm:px-8 dark:bg-[var(--section-alt)]">
       <div className="mx-auto max-w-5xl">
         {/* 标题 */}
         <h2 className="text-center text-3xl font-bold text-foreground sm:text-4xl">
@@ -36,7 +36,7 @@ export default function Services() {
           {SERVICES.map((service) => (
             <div
               key={service.name}
-              className="group flex flex-col overflow-hidden rounded-xl bg-card shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+              className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:bg-card"
             >
               {/* 顶部彩色渐变条 */}
               <div

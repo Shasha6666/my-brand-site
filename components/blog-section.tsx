@@ -5,7 +5,7 @@ export default function BlogSection() {
   const posts = getAllBlogPosts();
 
   return (
-    <section id="blog" className="bg-[#edf0f5] px-6 py-24 sm:px-8">
+    <section id="blog" className="bg-[#edf0f5] px-6 py-24 sm:px-8 dark:bg-[var(--section-alt)]">
       <div className="mx-auto max-w-4xl">
         <h2 className="text-center text-3xl font-bold text-foreground sm:text-4xl">
           技术博客

@@ -95,6 +95,9 @@ article :not(pre) > code {
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(0.2 0.01 260);
     --sidebar-ring: oklch(0.65 0.2 275);
+
+    /* 交替区域背景 — 暗蓝紫色，与 --background 形成层次感 */
+    --section-alt: oklch(0.11 0.025 268);
   }
 }
 

@@ -30,7 +30,7 @@ const BOOKS = [
 
 export default function Books() {
   return (
-    <section id="books" className="bg-[#edf0f5] px-6 py-24 sm:px-8">
+    <section id="books" className="bg-[#edf0f5] px-6 py-24 sm:px-8 dark:bg-[var(--section-alt)]">
       <div className="mx-auto max-w-6xl">
         {/* 标题 */}
         <h2 className="text-center text-3xl font-bold text-foreground sm:text-4xl">
@@ -48,7 +48,7 @@ export default function Books() {
               href={book.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col gap-3 rounded-xl bg-card p-3 shadow-md transition-all duration-500 hover:-translate-y-3 hover:shadow-xl"
+              className="group flex flex-col gap-3 rounded-xl bg-white p-3 shadow-md transition-all duration-500 hover:-translate-y-3 hover:shadow-xl dark:bg-card"
             >
               {/* 封面区域 */}
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-muted">

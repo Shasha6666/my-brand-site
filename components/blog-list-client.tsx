@@ -84,7 +84,7 @@ export default function BlogListClient({ posts }: Props) {
           value={query}
           onChange={(e) => handleQueryChange(e.target.value)}
           placeholder="搜索文章..."
-          className="w-full rounded-lg border border-border bg-white py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-primary)/0.4)]"
+          className="w-full rounded-lg border border-border bg-white py-2.5 pl-10 pr-4 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-primary)/0.4)] dark:bg-card"
         />
       </div>
 
@@ -109,7 +109,7 @@ export default function BlogListClient({ posts }: Props) {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-card"
               >
                 <div className={`h-1.5 w-full bg-gradient-to-r ${g}`} />
                 <div className="flex flex-1 flex-col gap-2 px-5 py-4">

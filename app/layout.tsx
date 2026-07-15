@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import AIChat from "@/components/ai-chat";
@@ -59,15 +60,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className="scroll-smooth">
+    <html lang="zh-CN" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
-        <AIChat />
-        <WeixinFloat />
+        <ThemeProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <AIChat />
+          <WeixinFloat />
+        </ThemeProvider>
       </body>
     </html>
   );
