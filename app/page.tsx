@@ -7,7 +7,13 @@ import ReviewList from "@/components/review-list";
 import ReviewForm from "@/components/review-form";
 import BlogSection from "@/components/blog-section";
 
-export default function Home() {
+interface Props {
+  searchParams?: { page?: string };
+}
+
+export default function Home({ searchParams }: Props) {
+  const page = parseInt(searchParams?.page ?? "1", 10) || 1;
+
   return (
     <main className="min-h-screen">
       {/* 主视觉区 */}
@@ -34,7 +40,7 @@ export default function Home() {
       </section>
 
       {/* 博客区 */}
-      <BlogSection />
+      <BlogSection page={page} />
     </main>
   );
 }

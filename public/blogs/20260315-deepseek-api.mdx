@@ -1,0 +1,13 @@
+---
+title: "DeepSeek API 接入指南：从注册到第一条 AI 回复"
+date: "2026-03-15"
+summary: "手把手教你注册 DeepSeek、获取 API Key、在 Next.js 项目中实现流式对话"
+---
+
+DeepSeek 是目前性价比最高的 AI API 之一，价格不到 OpenAI 的十分之一，效果却相当不错。这篇记录我接入 DeepSeek API 的全过程。
+
+首先去 DeepSeek 官网注册账号，在控制台创建 API Key。注意 Key 只显示一次，记得复制保存。然后把 Key 加到项目的 `.env.local` 中：`DEEPSEEK_API_KEY=你的密钥`。
+
+在 Next.js 中，我用了 Vercel AI SDK 的 `streamText` 方法，它封装了流式响应的处理。因为 DeepSeek 兼容 OpenAI 的接口格式，只需要把 `baseURL` 改成 `https://api.deepseek.com/v1`，模型名用 `deepseek-chat` 就行了。
+
+流式输出的效果是 AI 的回答一个字一个字地出现，就像聊天软件里对方正在打字一样，用户体验比等几秒一次性出全文好很多。
