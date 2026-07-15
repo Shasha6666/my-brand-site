@@ -1,14 +1,13 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { MDXRemoteProps } from "next-mdx-remote/rsc";
-import type { ReactNode } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 /* ── 基础组件 ── */
 
-/** 引用块 */
-function Blockquote({ children, ...props }: { children?: ReactNode } & Record<string, unknown>) {
+function Blockquote({ children, className, ...props }: ComponentPropsWithoutRef<"blockquote">) {
   return (
     <blockquote
-      className="my-6 border-l-4 border-[hsl(var(--brand-primary))] bg-muted/50 py-3 pl-5 pr-4 text-muted-foreground italic"
+      className={`my-6 border-l-4 border-[hsl(var(--brand-primary))] bg-muted/50 py-3 pl-5 pr-4 text-muted-foreground italic ${className ?? ""}`}
       {...props}
     >
       {children}
@@ -16,25 +15,25 @@ function Blockquote({ children, ...props }: { children?: ReactNode } & Record<st
   );
 }
 
-function H2({ children, ...props }: { children?: ReactNode } & Record<string, unknown>) {
-  return <h2 className="mt-10 mb-4 text-2xl font-bold text-foreground" {...props}>{children}</h2>;
+function H2({ children, className, ...props }: ComponentPropsWithoutRef<"h2">) {
+  return <h2 className={`mt-10 mb-4 text-2xl font-bold text-foreground ${className ?? ""}`} {...props}>{children}</h2>;
 }
 
-function H3({ children, ...props }: { children?: ReactNode } & Record<string, unknown>) {
-  return <h3 className="mt-8 mb-3 text-xl font-semibold text-foreground" {...props}>{children}</h3>;
+function H3({ children, className, ...props }: ComponentPropsWithoutRef<"h3">) {
+  return <h3 className={`mt-8 mb-3 text-xl font-semibold text-foreground ${className ?? ""}`} {...props}>{children}</h3>;
 }
 
-function P({ children, ...props }: { children?: ReactNode } & Record<string, unknown>) {
-  return <p className="my-4 leading-relaxed text-foreground/85" {...props}>{children}</p>;
+function P({ children, className, ...props }: ComponentPropsWithoutRef<"p">) {
+  return <p className={`my-4 leading-relaxed text-foreground/85 ${className ?? ""}`} {...props}>{children}</p>;
 }
 
-function Ul({ children, ...props }: { children?: ReactNode } & Record<string, unknown>) {
-  return <ul className="my-4 list-disc space-y-1.5 pl-6 text-foreground/85" {...props}>{children}</ul>;
+function Ul({ children, className, ...props }: ComponentPropsWithoutRef<"ul">) {
+  return <ul className={`my-4 list-disc space-y-1.5 pl-6 text-foreground/85 ${className ?? ""}`} {...props}>{children}</ul>;
 }
 
-function A({ children, href, ...props }: { children?: ReactNode; href?: string } & Record<string, unknown>) {
+function A({ children, href, className, ...props }: ComponentPropsWithoutRef<"a">) {
   return (
-    <a href={href} className="text-[hsl(var(--brand-primary))] underline underline-offset-2 hover:no-underline" {...props}>
+    <a href={href} className={`text-[hsl(var(--brand-primary))] underline underline-offset-2 hover:no-underline ${className ?? ""}`} {...props}>
       {children}
     </a>
   );
@@ -53,7 +52,7 @@ import { Diff, DiffLine } from "./diff";
 import { Timeline, TimelineItem } from "./timeline";
 import { Download } from "./download";
 
-const components: MDXRemoteProps["components"] = {
+const components = {
   /* 基础 */
   blockquote: Blockquote,
   h2: H2,
@@ -78,7 +77,7 @@ const components: MDXRemoteProps["components"] = {
   Timeline,
   TimelineItem,
   Download,
-};
+} satisfies MDXRemoteProps["components"];
 
 export default function MDXWrapper({ source }: { source: string }) {
   return <MDXRemote source={source} components={components} />;

@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getBlogBySlug, getAllBlogs } from "@/lib/blogs";
 import MDXWrapper from "@/components/mdx/mdx-wrapper";
+
+const SITE_URL = "https://my-brand-site-tau.vercel.app";
 
 interface Props {
   params: { slug: string };
@@ -9,6 +12,22 @@ interface Props {
 
 export function generateStaticParams() {
   return getAllBlogs().map((post) => ({ slug: post.slug }));
+}
+
+export function generateMetadata({ params }: Props): Metadata {
+  const post = getBlogBySlug(params.slug);
+  if (!post) return {};
+  return {
+    title: `${post.title} - MyBrandSite`,
+    description: post.summary,
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      type: "article",
+      publishedTime: post.date,
+    },
+  };
 }
 
 export default function BlogPostPage({ params }: Props) {

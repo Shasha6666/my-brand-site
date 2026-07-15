@@ -1,19 +1,16 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState, type ComponentPropsWithoutRef } from "react";
 
-interface Props {
-  children?: ReactNode;
-}
-
-export function CodeBlock({ children, ...props }: Props & Record<string, unknown>) {
+export function CodeBlock({ children, className, ...props }: ComponentPropsWithoutRef<"pre">) {
   const [copied, setCopied] = useState(false);
 
   const getText = (node: unknown): string => {
     if (typeof node === "string") return node;
     if (Array.isArray(node)) return node.map(getText).join("");
-    if (node && typeof node === "object" && "props" in (node as any)) {
-      return getText((node as any).props.children);
+    if (node && typeof node === "object" && "props" in node) {
+      const obj = node as { props: { children?: unknown } };
+      return getText(obj.props.children);
     }
     return "";
   };
@@ -28,7 +25,7 @@ export function CodeBlock({ children, ...props }: Props & Record<string, unknown
   return (
     <div className="group relative my-6">
       <pre
-        className="overflow-x-auto rounded-lg bg-[#1e1e2e] px-5 py-4 text-sm leading-relaxed text-[#cdd6f4]"
+        className={`overflow-x-auto rounded-lg bg-[#1e1e2e] px-5 py-4 text-sm leading-relaxed text-[#cdd6f4] ${className ?? ""}`}
         {...props}
       >
         {children}

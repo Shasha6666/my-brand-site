@@ -17,9 +17,40 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const SITE_URL = "https://my-brand-site-tau.vercel.app";
+
 export const metadata: Metadata = {
-  title: "MyBrandSite",
-  description: "我的个人品牌站",
+  title: "MyBrandSite - ss的品牌站",
+  description:
+    "ss个人品牌网站，专注 AI 编程、仓颉/鸿蒙开发、软件培训与技术咨询，分享技术博客",
+  keywords: [
+    "AI编程",
+    "仓颉开发",
+    "鸿蒙开发",
+    "软件开发",
+    "小程序开发",
+    "技术培训",
+    "技术咨询",
+  ],
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "MyBrandSite - ss的品牌站",
+    description:
+      "ss个人品牌网站，专注 AI 编程、仓颉/鸿蒙开发、软件培训与技术咨询，分享技术博客",
+    url: SITE_URL,
+    siteName: "MyBrandSite",
+    locale: "zh_CN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MyBrandSite - ss的品牌站",
+    description:
+      "ss个人品牌网站，专注 AI 编程、仓颉/鸿蒙开发、软件培训与技术咨询，分享技术博客",
+  },
 };
 
 export default function RootLayout({

@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, type ReactNode, Children } from "react";
+import { useState, isValidElement, type ReactNode, Children } from "react";
 
 interface Props {
-  labels: string; // 逗号分隔："标签1,标签2,标签3"
+  labels: string;
   children?: ReactNode;
 }
 
 export function Tabs({ labels, children }: Props) {
   const tabs = labels.split(",").map((s) => s.trim());
   const kids = Children.toArray(children).filter(
-    (c) => typeof c === "object" && c !== null && "type" in c && (c as any).type === TabPanel
+    (c) => isValidElement(c) && c.type === TabPanel
   );
   const [active, setActive] = useState(0);
 

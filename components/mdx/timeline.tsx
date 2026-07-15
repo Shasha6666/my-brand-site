@@ -1,4 +1,4 @@
-import { Children, type ReactNode } from "react";
+import { Children, isValidElement, type ReactNode } from "react";
 
 interface TimelineItemProps {
   time?: string;
@@ -9,12 +9,10 @@ interface TimelineItemProps {
 export function TimelineItem({ time, title, children }: TimelineItemProps) {
   return (
     <div className="flex gap-4">
-      {/* 时间点 + 线 */}
       <div className="flex flex-col items-center">
         <div className="mt-1 h-3 w-3 flex-shrink-0 rounded-full border-2 border-[hsl(var(--brand-primary))] bg-card" />
         <div className="w-0.5 flex-1 bg-border" />
       </div>
-      {/* 内容 */}
       <div className="pb-6 pt-0">
         {time && (
           <span className="text-xs font-medium text-muted-foreground">
@@ -38,7 +36,7 @@ interface TimelineProps {
 
 export function Timeline({ children }: TimelineProps) {
   const items = Children.toArray(children).filter(
-    (c) => typeof c === "object" && c !== null && "type" in c && (c as any).type === TimelineItem
+    (c) => isValidElement(c) && c.type === TimelineItem
   );
 
   return <div className="my-6">{items}</div>;
