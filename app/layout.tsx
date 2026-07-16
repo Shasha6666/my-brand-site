@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
@@ -71,6 +72,12 @@ export default function RootLayout({
           <AIChat />
           <WeixinFloat />
         </ThemeProvider>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="50db127c-779d-4e01-bdb0-1ce1e089063f"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
