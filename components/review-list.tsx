@@ -114,13 +114,13 @@ export default function ReviewList() {
 
       {/* 评价卡片 */}
       {!loading && reviews.length > 0 && (
-        <div className="mt-12 grid gap-5 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {reviews.map((r, i) => {
             const g = GRADIENTS[((page - 1) * PAGE_SIZE + i) % GRADIENTS.length];
             return (
               <div
                 key={r.id}
-                className="group flex flex-col overflow-hidden rounded-xl bg-[hsl(var(--brand-primary)/0.06)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                className="group flex flex-col overflow-hidden rounded-xl bg-[hsl(var(--brand-primary)/0.06)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-card"
               >
                 {/* 顶部渐变线 */}
                 <div className={`h-1.5 w-full bg-gradient-to-r ${g.bar}`} />

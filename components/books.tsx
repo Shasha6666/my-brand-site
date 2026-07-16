@@ -41,14 +41,14 @@ export default function Books() {
         </p>
 
         {/* 图书网格 */}
-        <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
           {BOOKS.map((book) => (
             <a
               key={book.title}
               href={book.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col gap-3 rounded-xl bg-white p-3 shadow-md transition-all duration-500 hover:-translate-y-3 hover:shadow-xl dark:bg-card"
+              className="group flex flex-col gap-3 rounded-xl bg-white p-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-card"
             >
               {/* 封面区域 */}
               <div className="relative aspect-[3/4] w-full overflow-hidden rounded-lg bg-muted">

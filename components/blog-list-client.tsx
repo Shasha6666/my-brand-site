@@ -102,7 +102,7 @@ export default function BlogListClient({ posts }: Props) {
 
       {/* 文章列表 */}
       {filtered.length > 0 && (
-        <div className="mt-10 grid gap-5 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {paged.map((post, i) => {
             const g = GRADIENTS[i % GRADIENTS.length];
             return (
@@ -112,7 +112,7 @@ export default function BlogListClient({ posts }: Props) {
                 className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-card"
               >
                 <div className={`h-1.5 w-full bg-gradient-to-r ${g}`} />
-                <div className="flex flex-1 flex-col gap-2 px-5 py-4">
+                <div className="flex flex-1 flex-col gap-3 px-5 py-4">
                   <h3 className="text-lg font-semibold text-foreground">
                     {post.title}
                   </h3>

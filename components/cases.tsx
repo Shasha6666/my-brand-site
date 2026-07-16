@@ -50,7 +50,7 @@ export default function Cases() {
           {CASES.map((c) => (
             <div
               key={c.name}
-              className="group flex flex-col overflow-hidden rounded-xl bg-[hsl(var(--brand-primary)/0.06)] shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+              className="group flex flex-col overflow-hidden rounded-xl bg-[hsl(var(--brand-primary)/0.06)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-card"
             >
               {/* 截图 */}
               <div className="relative h-48 overflow-hidden">
@@ -63,7 +63,7 @@ export default function Cases() {
                 />
               </div>
               {/* 信息 */}
-              <div className="flex flex-col gap-1.5 px-5 py-4">
+              <div className="flex flex-col gap-3 px-5 py-4">
                 <h3 className="text-lg font-semibold text-foreground">
                   {c.name}
                 </h3>

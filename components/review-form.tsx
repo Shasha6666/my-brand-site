@@ -90,7 +90,7 @@ export default function ReviewForm() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="mx-auto mt-12 max-w-xl overflow-hidden rounded-xl bg-[hsl(var(--brand-primary)/0.06)] shadow-md"
+          className="mx-auto mt-12 max-w-xl overflow-hidden rounded-xl bg-[hsl(var(--brand-primary)/0.06)] shadow-md dark:bg-card"
         >
           {/* 顶部渐变装饰线 */}
           <div className="h-1.5 w-full bg-gradient-to-r from-[hsl(var(--brand-primary))] to-[hsl(var(--brand-accent))]" />
@@ -110,7 +110,7 @@ export default function ReviewForm() {
                 }}
                 maxLength={20}
                 placeholder="你的名字"
-                className={`w-full rounded-lg border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-primary)/0.4)] ${
+                className={`w-full rounded-lg border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-primary)/0.4)] ${
                   errors.name ? "border-red-400" : "border-border"
                 }`}
               />
@@ -175,7 +175,7 @@ export default function ReviewForm() {
                   maxLength={MAX_CONTENT}
                   rows={4}
                   placeholder="写下你的真实评价（至少 10 个字）"
-                  className={`w-full resize-none rounded-lg border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-primary)/0.4)] ${
+                  className={`w-full resize-none rounded-lg border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--brand-primary)/0.4)] ${
                     errors.content ? "border-red-400" : "border-border"
                   }`}
                 />

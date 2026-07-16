@@ -36,7 +36,7 @@ export default function Services() {
           {SERVICES.map((service) => (
             <div
               key={service.name}
-              className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-xl dark:bg-card"
+              className="group flex flex-col overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-card"
             >
               {/* 顶部彩色渐变条 */}
               <div
@@ -47,7 +47,7 @@ export default function Services() {
                 <span className="text-5xl leading-none transition-transform duration-500 group-hover:scale-110">
                   {service.emoji}
                 </span>
-                <h3 className="text-xl font-semibold text-foreground">
+                <h3 className="text-lg font-semibold text-foreground">
                   {service.name}
                 </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
